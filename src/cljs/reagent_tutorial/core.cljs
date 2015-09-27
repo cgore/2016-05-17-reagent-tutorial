@@ -7,14 +7,28 @@
     (:import goog.History))
 
 ;; -------------------------
+;; Components
+
+(defn simple-component []
+  [:div
+   [:p "I am a component!"]
+   [:p.someclass
+    "I have " [:strong "bold"]
+    [:span {:style {:color "red"}} " and red "] "text."]])
+
+;; -------------------------
 ;; Views
 
 (defn home-page []
   [:div [:h2 "Welcome to reagent-tutorial"]
+   [:p "Here's a simple component:"
+    [simple-component]]
    [:div [:a {:href "#/about"} "go to about page"]]])
 
 (defn about-page []
   [:div [:h2 "About reagent-tutorial"]
+   [:p "Components can be shared among other pages:"
+    [simple-component]]
    [:div [:a {:href "#/"} "go to the home page"]]])
 
 (defn current-page []
