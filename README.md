@@ -20,3 +20,8 @@ cd reagent-tutorial; lein figwheel
 
 and then eventually connect at
 [localhost:3449](http://localhost:3449/).
+
+Tags Along the Tutorial
+=======================
+
+1. [initial-commit](https://github.com/cgore/reagent-tutorial/tree/initial-project)
