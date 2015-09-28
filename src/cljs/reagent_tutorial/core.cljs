@@ -26,14 +26,25 @@
    [:input {:type "button" :value "Click me!"
             :on-click #(swap! click-count inc)}]])
 
+(defn timer-component []
+  (let [seconds-elapsed (atom 0)]
+    (fn []
+      (js/setTimeout #(swap! seconds-elapsed inc) 1000)
+      [:div
+       "Seconds Elapsed: " @seconds-elapsed])))
+
 ;; -------------------------
 ;; Views
 
 (defn home-page []
   [:div [:h2 "Welcome to reagent-tutorial"]
-   [:p "Here's a simple component:"
-    [simple-component]]
+   [:hr]
+   [simple-component]
+   [:hr]
    [counting-component]
+   [:hr]
+   [timer-component]
+   [:hr]
    [:div [:a {:href "#/about"} "go to about page"]]])
 
 (defn about-page []
