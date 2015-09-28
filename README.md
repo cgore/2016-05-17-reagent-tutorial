@@ -25,3 +25,4 @@ Tags Along the Tutorial
 =======================
 
 1. [initial-commit](https://github.com/cgore/reagent-tutorial/tree/initial-project)
+2. [adding-a-simple-component](https://github.com/cgore/reagent-tutorial/tree/adding-a-simple-component)
