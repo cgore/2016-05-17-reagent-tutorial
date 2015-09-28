@@ -6,6 +6,8 @@
               [goog.history.EventType :as EventType])
     (:import goog.History))
 
+(def click-count (atom 0))
+
 ;; -------------------------
 ;; Components
 
@@ -16,6 +18,14 @@
     "I have " [:strong "bold"]
     [:span {:style {:color "red"}} " and red "] "text."]])
 
+
+(defn counting-component []
+  [:div
+   "The atom " [:code "click-count"] " has value: "
+   @click-count ". "
+   [:input {:type "button" :value "Click me!"
+            :on-click #(swap! click-count inc)}]])
+
 ;; -------------------------
 ;; Views
 
@@ -23,6 +33,7 @@
   [:div [:h2 "Welcome to reagent-tutorial"]
    [:p "Here's a simple component:"
     [simple-component]]
+   [counting-component]
    [:div [:a {:href "#/about"} "go to about page"]]])
 
 (defn about-page []
