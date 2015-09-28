@@ -4,6 +4,8 @@ This is a basic workthrough tutorial project for
 using
 [Reagent](https://reagent-project.github.io/).
 
+There is a nice short tutorial [here](https://holmsand.github.io/reagent/).
+
 This was created with the lein
 [reagent-template](https://github.com/reagent-project/reagent-template)
 plugin by:
