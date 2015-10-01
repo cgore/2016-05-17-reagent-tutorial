@@ -31,3 +31,4 @@ Tags Along the Tutorial
 3. [adding-an-atom](https://github.com/cgore/reagent-tutorial/tree/adding-an-atom)
 4. [adding-a-timer](https://github.com/cgore/reagent-tutorial/tree/adding-a-timer)
 5. [shared-state-input-box](https://github.com/cgore/reagent-tutorial/tree/shared-state-input-box)
+6. [bmi-calculator](https://github.com/cgore/reagent-tutorial/tree/bmi-calculator)
