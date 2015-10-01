@@ -33,6 +33,18 @@
       [:div
        "Seconds Elapsed: " @seconds-elapsed])))
 
+(defn atom-input [value]
+  [:input {:type "text"
+           :value @value
+           :on-change #(reset! value (-> % .-target .-value))}])
+
+(defn shared-state []
+  (let [val (atom "foo")]
+    (fn []
+      [:div
+       [:p "The value is now: " @val]
+       [:p "Change it here: " [atom-input val]]])))
+
 ;; -------------------------
 ;; Views
 
@@ -44,6 +56,8 @@
    [counting-component]
    [:hr]
    [timer-component]
+   [:hr]
+   [shared-state]
    [:hr]
    [:div [:a {:href "#/about"} "go to about page"]]])
 
