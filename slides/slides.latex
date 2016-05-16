@@ -179,6 +179,32 @@
 
 
 \begin{slide}
+  \h{ClojureScript lets us use Clojure, a real lisp, in place of JavaScript.}
+
+  \fullSlideImage{cljs-bluebg.eps}
+\end{slide}
+
+
+\begin{slide}
+  \h{Reagent is a wrapper around React.js for ClojureScript.}
+
+  \fullSlideImage{React-bluebg.eps}
+\end{slide}
+
+
+\begin{slide}
+  \h{Why do we want to use React.js?}
+
+  \begin{itemize}
+  \item React.js comes out of Facebook originally, but is used everywhere now.
+  \item React.js dates back to 2011.
+  \item React.js is good at creating user interfaces.
+  \item If you are used to MVC, React.js is the \textbf{V}.
+  \end{itemize}
+\end{slide}
+
+
+\begin{slide}
   \h{Conclusion}
 
   \vfill
