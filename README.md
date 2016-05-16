@@ -23,12 +23,5 @@ cd reagent-tutorial; lein figwheel
 and then eventually connect at
 [localhost:3449](http://localhost:3449/).
 
-Tags Along the Tutorial
-=======================
-
-1. [initial-commit](https://github.com/cgore/reagent-tutorial/tree/initial-project)
-2. [adding-a-simple-component](https://github.com/cgore/reagent-tutorial/tree/adding-a-simple-component)
-3. [adding-an-atom](https://github.com/cgore/reagent-tutorial/tree/adding-an-atom)
-4. [adding-a-timer](https://github.com/cgore/reagent-tutorial/tree/adding-a-timer)
-5. [shared-state-input-box](https://github.com/cgore/reagent-tutorial/tree/shared-state-input-box)
-6. [bmi-calculator](https://github.com/cgore/reagent-tutorial/tree/bmi-calculator)
+Each of the directories of the form NN-something is a step, in order, along the
+development of the tutorial.
