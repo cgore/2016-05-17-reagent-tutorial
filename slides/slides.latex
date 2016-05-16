@@ -210,6 +210,39 @@
 
 
 \begin{slide}
+  \h{ClojureScript versus JavaScript -- no variable hoisting}
+
+  This actually does something in JavaScript other than raise an error, which is
+  probably not what you want:
+
+\begin{lstlisting}[language=Java]
+function printName() {
+  console.log('Hello, ' + name);
+  var name = 'Bob';
+}
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{ClojureScript versus JavaScript -- destructuring binds}
+
+\begin{lstlisting}
+(def m {:first "Bob"
+        :middle "J"
+        :last "Smith"})
+ 
+(let [{:keys [first middle last]} m]
+  ...)
+ 
+(def color [255 255 100 0.5])
+ 
+(let [[r g _ a] color]
+  ...)
+\end{lstlisting}
+\end{slide}
+
+\begin{slide}
   \h{Reagent is a wrapper around React.js for ClojureScript.}
 
   \fullSlideImage{React-bluebg.eps}
