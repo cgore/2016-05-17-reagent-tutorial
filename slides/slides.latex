@@ -264,6 +264,20 @@ var m = {
 
 
 \begin{slide}
+  \h{There's lots of other differences too, but they are mostly opinionated
+    things.}
+
+  \begin{itemize}
+  \item Immutable collections
+  \item Simpler Boolean system
+  \item Optional parameters and arity
+  \item Lazy evaluation
+  \item \textellipsis
+  \end{itemize}
+\end{slide}
+
+
+\begin{slide}
   \h{Reagent is a wrapper around React.js for ClojureScript.}
 
   \fullSlideImage{React-bluebg.eps}
