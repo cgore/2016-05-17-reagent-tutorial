@@ -242,6 +242,27 @@ function printName() {
 \end{lstlisting}
 \end{slide}
 
+
+\begin{slide}
+  \h{ClojureScript versus JavaScript -- arbitrary keys for hash maps}
+
+\begin{lstlisting}[language=Java]
+// JavaScript -- Only string keys allowed
+var m = {
+  "foo": 1,
+  "bar": 2
+};
+\end{lstlisting}
+
+\begin{lstlisting}
+;; ClojureScript -- Arbitrary keys allowed
+(def m { [1 2] 3
+        #{1 2} 3
+        '(1 2) 3 })
+\end{lstlisting}
+\end{slide}
+
+
 \begin{slide}
   \h{Reagent is a wrapper around React.js for ClojureScript.}
 
