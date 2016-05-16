@@ -297,10 +297,196 @@ var m = {
 
 
 \begin{slide}
+  \h{Why Reagent instead of Om?}
+
+  \begin{itemize}
+  \item They both wrap React.js in ClojureScript.
+  \item I haven't used either except for tutorials.
+  \item Om has a shorter name, which is better.
+  \item But Reagent has a more awesome name.
+  \item Reagent looks more logical to me.
+  \end{itemize}
+
+  So I went with Reagent to play with first.
+\end{slide}
+
+
+\begin{slide}
+  \h{01-initial-project}
+
+  This is just a simple project stood up via
+
+\begin{lstlisting}[language=sh]
+lein new reagent reagent-tutorial
+\end{lstlisting}
+
+  You can then do
+
+\begin{lstlisting}[language=sh]
+cd reagent-tutorial
+lein figwheel
+\end{lstlisting}
+
+  And view the page at \texttt{http://localhost:3449/}.
+\end{slide}
+
+
+\begin{slide}
+  \h{02-adding-a-simple-component}
+
+  We add a simple component:
+
+\begin{lstlisting}
+(defn simple-component []
+  [:div
+   [:p "I am a component!"]
+   [:p.someclass
+    "I have " [:strong "bold"]
+    [:span {:style {:color "red"}} " and red "] "text."]])
+\end{lstlisting}
+
+  And use it.
+
+\begin{lstlisting}
+(defn home-page []
+  [:div [:h2 "Welcome to reagent-tutorial"]
+   [:p "Here's a simple component:"
+    [simple-component]]
+   [:div [:a {:href "#/about"} "go to about page"]]])
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{03-adding-an-atom}
+
+  In Clojure, mutable state is typically done with an atom.
+
+\begin{lstlisting}
+(def click-count (atom 0))
+
+(defn counting-component []
+  [:div
+   "The atom "
+   [:code "click-count"]
+   " has value: "
+   @click-count ". "
+   [:input {:type "button" :value "Click me!"
+            :on-click #(swap! click-count inc)}]])  
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{04-adding-a-timer}
+
+  We can have local atoms within let blocks.
+  And we can update those atoms at a regular interval from the clock.
+  
+\begin{lstlisting}
+(defn timer-component []
+  (let [seconds-elapsed (atom 0)]
+    (fn []
+      (js/setTimeout #(swap! seconds-elapsed inc) 1000)
+      [:div
+       "Seconds Elapsed: " @seconds-elapsed])))    
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{05-shared-state-input-box}
+
+  Often you'll want to update an atom in one place and display it in another.
+  
+\begin{lstlisting}
+(defn shared-state []
+  (let [val (atom "foo")]
+    (fn []
+      [:div
+       [:p "The value is now: " @val]
+       [:p "Change it here: " [atom-input val]]])))
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{06-bmi-calculator}
+
+  This is a bit more complicated.
+  It consists of a function to calculate a basic BMI value:
+
+\begin{lstlisting}  
+(defn calc-bmi []
+  (let [{:keys [height weight bmi] :as data} @bmi-data
+        h (/ height 100)]
+    (if (nil? bmi)
+      (assoc data :bmi (/ weight (* h h)))
+      (assoc data :weight (* bmi h h)))))
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{06-bmi-calculator}
+
+  A slider:
+
+\begin{lstlisting}  
+(defn slider [param value min max]
+  [:input {:type "range"
+           :value value
+           :min min
+           :max max
+           :style {:width "100%"}
+           :on-change
+             (fn [e]
+               (swap! bmi-data assoc param
+                      (.-target.value e))
+               (when (not= param :bmi)
+                 (swap! bmi-data assoc :bmi nil)))}])
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{06-bmi-calculator}
+
+  And finally the actual BMI component:
+
+\begin{lstlisting}[basicstyle=\scriptsize\ttfamily]  
+(defn bmi-component []
+  (let [{:keys [weight height bmi]} (calc-bmi)
+        [color diagnose] (cond (< bmi 18.5) ["orange" "underweight"]
+                               (< bmi 25) ["inherit" "normal"]
+                               (< bmi 30) ["orange" "overweight"]
+                               :else ["red" "obese"])]
+    [:div
+     [:h3 "BMI calculator"]
+     [:div
+      "Height: " (int height) "cm"
+      [slider :height height 100 220]]
+     [:div
+      "Weight: " (int weight) "kg"
+      [slider :weight weight 30 150]]
+     [:div
+      "BMI: " (int bmi) " "
+      [:span {:style {:color color}} diagnose]
+      [slider :bmi bmi 10 50]]]))
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
   \h{Conclusion}
 
-  \vfill
-  \raggedleft
+  I ended up going with JavaScript after all for the project I was originally
+  looking into this for.  But it's a bit of a special case and will need to
+  generate JavaScript itself, sort of like ClojureScript.  If you don't need
+  that \textit{(you probably don't)} then ClojureScript and Reagent might be a
+  really good fit.
+
+  \vfill \raggedleft
   \textcolor{\hc}{\textbf{\emph{\Huge{Questions?}}}}
 \end{slide}
 \end{document}
