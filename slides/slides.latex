@@ -186,6 +186,30 @@
 
 
 \begin{slide}
+  \h{ClojureScript versus JavaScript -- Namespaces}
+
+  JavaScript has no native namespacing.
+
+  ClojureScript's namespacing works the same as in Clojure.
+
+  One namespace:
+
+\begin{lstlisting}
+(ns my.library)
+...
+\end{lstlisting}  
+
+  Including another namespace:
+
+\begin{lstlisting}
+(ns my.library
+  (:require [other.library :as other]))
+...
+\end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
   \h{Reagent is a wrapper around React.js for ClojureScript.}
 
   \fullSlideImage{React-bluebg.eps}
