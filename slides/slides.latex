@@ -332,6 +332,13 @@ lein figwheel
 
 
 \begin{slide}
+  \h{01-initial-project}
+
+  \fullSlideImage{01-initial-project.eps}
+\end{slide}
+
+
+\begin{slide}
   \h{02-adding-a-simple-component}
 
   We add a simple component:
@@ -358,6 +365,13 @@ lein figwheel
 
 
 \begin{slide}
+  \h{02-adding-a-simple-component}
+
+  \fullSlideImage{02-adding-a-simple-component.eps}
+\end{slide}
+
+
+\begin{slide}
   \h{03-adding-an-atom}
 
   In Clojure, mutable state is typically done with an atom.
@@ -374,6 +388,13 @@ lein figwheel
    [:input {:type "button" :value "Click me!"
             :on-click #(swap! click-count inc)}]])  
 \end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{03-adding-an-atom}
+
+  \fullSlideImage{03-adding-an-atom.eps}
 \end{slide}
 
 
@@ -395,6 +416,13 @@ lein figwheel
 
 
 \begin{slide}
+  \h{04-adding-a-timer}
+
+  \fullSlideImage{04-adding-a-timer.eps}
+\end{slide}
+
+
+\begin{slide}
   \h{05-shared-state-input-box}
 
   Often you'll want to update an atom in one place and display it in another.
@@ -407,6 +435,13 @@ lein figwheel
        [:p "The value is now: " @val]
        [:p "Change it here: " [atom-input val]]])))
 \end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{05-shared-state-input-box}
+
+  \fullSlideImage{05-shared-state-input-box.eps}
 \end{slide}
 
 
@@ -474,6 +509,13 @@ lein figwheel
       [:span {:style {:color color}} diagnose]
       [slider :bmi bmi 10 50]]]))
 \end{lstlisting}
+\end{slide}
+
+
+\begin{slide}
+  \h{06-bmi-calculator}
+
+  \fullSlideImage{06-bmi-calculator.eps}
 \end{slide}
 
 
